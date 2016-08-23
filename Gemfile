@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 
+#for files and stuff.
+gem "paperclip", "~> 5.0.0"
+gem 'imagemagick-identify', '~> 0.0.1'
+
 # Use SCSS for stylesheets
 # gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap', '~> 4.0.0.alpha3'

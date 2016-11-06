@@ -1,0 +1,17 @@
+<h1>picture Index</h1>
+
+<table>
+    <tr>
+        <th>Image:</th>
+        <th>Position:</th>
+    </tr>
+    <% @pictures.each do |f| %>
+        <tr>
+            <td><%= image_tag f.image.url %></td>
+            <td><%= f.position %></td>
+            <td><%= link_to "Edit", { :controller => "pictures", :action => "edit", :id => f } %></td>
+            <td><%= link_to "Show", picture_path(f) %></td>
+            <td><%= link_to "Destroy", picture_path(f), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+    <% end %>
+</table>

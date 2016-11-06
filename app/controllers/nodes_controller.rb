@@ -2,12 +2,14 @@ class NodesController < ApplicationController
    before_action :set_node, only: [:edit, :update, :show, :destroy]
    
    def index
-      @nodes = Node.all 
+      @nodes = Node.all
+      @images = Image.all
    end
    
    def new
        @node = Node.new
        @parent = Node.find(params[:parent])
+
    end
    
    def create
@@ -25,6 +27,8 @@ class NodesController < ApplicationController
    end
     
   def show
+    @images = Image.all
+    
     @nodes = Node.all
     @id = Node.find(params[:id])
     @node = Node.find(params[:id])
@@ -33,7 +37,11 @@ class NodesController < ApplicationController
   end
   
   def edit
-    @parent = find_node_with_position(Node.find(params[:id]).position.chomp("."))
+    # if @node.parent.exists?
+      @parent = find_node_with_position(Node.find(params[:id]).parent)
+    # else
+     # @parent = find_node_with_position(Node.find(params[:id]).position.chomp("."))
+    #end
   end
   
   def update
@@ -47,6 +55,7 @@ class NodesController < ApplicationController
     
   def destroy
     destroy_children(@node)
+    destroy_image(@node)
     @node.destroy
     flash[:notice] = "Node (and children) were succesfully destroyed!"
     redirect_to nodes_path
@@ -107,6 +116,14 @@ class NodesController < ApplicationController
         if has_children(f)
           destroy_children(f)
         end
+        f.destroy
+      end
+    end
+  end
+  
+  def destroy_image(input)
+    Image.all.each do |f|
+      if f.position == input.position
         f.destroy
       end
     end

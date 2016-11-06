@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823161029) do
+ActiveRecord::Schema.define(version: 20160828133246) do
 
   create_table "aarons", force: :cascade do |t|
     t.text     "title"
@@ -20,11 +20,39 @@ ActiveRecord::Schema.define(version: 20160823161029) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "img_file_name"
+    t.string   "img_content_type"
+    t.integer  "img_file_size"
+    t.datetime "img_updated_at"
+  end
+
+  create_table "medias", force: :cascade do |t|
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "nodes", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
     t.string   "position"
     t.string   "parent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.text     "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"

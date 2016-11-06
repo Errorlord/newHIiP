@@ -1,0 +1,22 @@
+<% if @picture.errors.any? %>
+  <h2>The following errors occured.</h2>
+  <ul>
+    <% @picture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @picture, :html => { :multipart => true } do |f| %>
+  
+  <%= f.label :image %><br/>
+  <%= f.file_field :image %>
+  
+  <input type="hidden" name="position" value="<%= @position %>" />
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Back to node listing", nodes_path %>

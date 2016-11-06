@@ -1,0 +1,3 @@
+<%= image_tag @picture.image.url %>
+<%= link_to "pictures", pictures_path %>
+<%= link_to "Parent Node", node_path(find_node_with_position(@media.position).id)

@@ -1,0 +1,18 @@
+<h1>Listing all Images</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Image</th>
+    <th>Position</th>
+  </tr>
+  <%= @images.each do |f| %>
+    <tr>
+      <td><%= f.title %></td>
+      <td><%= f.content %></td>
+      <td><%= image_tag f.img.url %></td>
+      <td><%= f.position %></td>
+    </tr>
+  <% end %>
+</table>

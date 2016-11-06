@@ -1,0 +1,9 @@
+<%= link_to "Parent node: #{@image.position}", node_path(find_node_with_position(@image.position)) %>
+
+<h1>Showing Image</h1>
+
+<p>Title: <%= @image.title %></p>
+<p>Content: <%= @image.content %></p>
+<%= image_tag @image.img.url %>
+
+<%= link_to "Images Index", images_path %>

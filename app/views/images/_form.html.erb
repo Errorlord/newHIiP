@@ -1,0 +1,37 @@
+<% if @image.errors.any? %>
+    <h2>The following errors prevented the image from being created</h2>
+    <ul>
+        <% @image.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @image, :html => { :multipart => true } do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </p>
+  
+  <p>
+    <%= f.label :img %>
+    <%= f.file_field :img %>
+  </p>
+  
+  
+  
+  <input type="hidden" name="position" value="<%= params[:position] %>" />
+  
+  <p>
+    <%= f.submit %>
+  </p>
+  
+<% end %>
+
+<%= link_to "Back to all images", images_path %>
+<%= link_to "Back to all nodes", nodes_path %>

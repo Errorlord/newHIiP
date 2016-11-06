@@ -23,11 +23,15 @@
         <%= f.file_field :image %>
     </p>
     
-    <input type="hidden" name="parent" value="<%= @parent.id%>" />
+    <input type="hidden" name="parent" value="<%= @parent.id %>" />
     
     <p>
         <%= f.submit %>
     </p>
 <% end %>
+
+<% pos = @node.position %>
+<%= link_to "Add image", { :controller => "images", :action => "new", :position => @node.position } %>
+
 
 <%= link_to "Back to node listing", nodes_path %>
